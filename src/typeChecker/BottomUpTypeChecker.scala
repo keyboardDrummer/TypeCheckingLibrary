@@ -30,7 +30,20 @@ class BottomUpTypeChecker {
     }
   }
 
-  def getType(expression: Expression) : Type = expression match {
+  def getType(expression: Expression) : Type = {
+    val innerType = getTypeInner(expression)
+    evaluateType(innerType)
+  }
+
+  def evaluateType(innerType: Type): Type = {
+    innerType match {
+      case innerType@VariableType(name) => variableTypes.get(name).fold[Type](innerType)(evaluateType)
+      case LambdaType(input,output) => new LambdaType(evaluateType(input),evaluateType(output))
+      case _ => innerType
+    }
+  }
+
+  def getTypeInner(expression: Expression) : Type = expression match {
     case IntValue(_) => IntType
     case Call(callee,argument) => {
       variableTypes.push()
@@ -39,8 +52,9 @@ class BottomUpTypeChecker {
       val freshVariable = System.nanoTime()
       val outputType = new VariableType(freshVariable.toString)
       checkEquals(calleeType, new LambdaType(argumentType, outputType))
+      val result = evaluateType(outputType)
       variableTypes.pop()
-      outputType
+      result
     }
     case Variable(name) => {
       new VariableType(name)

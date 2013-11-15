@@ -17,8 +17,10 @@ class TestBottomUpTypeChecker extends TestSomeTypeChecker {
     }
   }
 
-  def assertCheckSuccess(expression: Expression): Unit = new BottomUpTypeChecker().getType(expression)
+  def assertCheckSuccess(expression: Expression): Unit =
+    assert(!new BottomUpTypeChecker().getType(expression).isInstanceOf[VariableType])
 
   def assertCheckFailure(expression: Expression): Unit =
     assertException(classOf[RuntimeException], () => new BottomUpTypeChecker().getType(expression))
+
 }
