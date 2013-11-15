@@ -5,6 +5,7 @@ import scala.collection.immutable.TreeMap
 import scala.collection.{immutable, mutable}
 import scala.collection.generic.CanBuildFrom
 import java.lang.RuntimeException
+import machine.Machine
 
 class Rewriter {
 

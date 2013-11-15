@@ -9,7 +9,7 @@ object Expression {
 
   implicit def IntToConstant(int: Int) = new IntValue(int)
 
-   implicit def BoolToConstant(bool: Boolean) = new IntValue(if (bool) 1 else 0)
+  implicit def BoolToConstant(bool: Boolean) = new IntValue(if (bool) 1 else 0)
 
   def call(callee: Expression, arguments: Expression*) =
     arguments.foldRight(callee)((argument, result) => new Call(result, argument))

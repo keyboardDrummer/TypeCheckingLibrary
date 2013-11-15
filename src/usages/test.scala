@@ -1,10 +1,8 @@
 package usages
 
-import scala.collection.immutable.TreeMap
-import usages.Examples
 import usages.Examples._
-import ast._
 import ast.Expression._
+import machine.Machine
 
 object HelloWorld {
   def main(args: Array[String]) {

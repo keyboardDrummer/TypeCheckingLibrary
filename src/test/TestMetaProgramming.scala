@@ -7,6 +7,7 @@ import ast.Call
 import ast.Addition
 import ast.Lambda
 import ast.Equals
+import machine.Machine
 
 class TestMetaProgramming {
 

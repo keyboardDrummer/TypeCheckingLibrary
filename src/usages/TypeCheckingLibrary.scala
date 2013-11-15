@@ -1,15 +1,16 @@
 //package usages
 //
 //import ast._
+//import typeChecker.VariableType
 //
-//class ScopedType(env: Map[String,Type], body: Type) extends TypeBase{
-//  def valueType: Type = body
+//class ScopedType(env: Map[String,typeChecker.Type], body: typeChecker.Type) extends TypeBase{
+//  def valueType: typeChecker.Type = body
 //  def typeScope = env
 //}
 //
 //abstract class Type extends TypeBase {
 //  def valueType = this
-//  def typeScope = Map.empty[String,Type]
+//  def typeScope = Map.empty[String,typeChecker.Type]
 //
 ////  def unify(first: TypeBase, second: TypeBase) : TypeBase = {
 ////    first match {
@@ -23,27 +24,27 @@
 //}
 //
 //abstract class TypeBase {
-//  def valueType : Type
+//  def valueType : typeChecker.Type
 //  def typeScope : TypeScope
 //
-//  type TypeScope = Map[String,Type]
+//  type TypeScope = Map[String,typeChecker.Type]
 //}
 //
 //
-//object IntType extends Type
-//object AnyType extends Type
-//case class LambdaType(input: Type, output: Type) extends Type {
+//object IntType extends typeChecker.Type
+//object AnyType extends typeChecker.Type
+//case class LambdaType(input: typeChecker.Type, output: typeChecker.Type) extends typeChecker.Type {
 //
 //}
 //
-//class TypesDoNotMatchException(expected: Type, actual: Type) extends RuntimeException
+//class TypesDoNotMatchException(expected: typeChecker.Type, actual: typeChecker.Type) extends RuntimeException
 //
 //class CanOnlyCallALambdaException extends RuntimeException
 //
-//object IntType extends Type
+//object IntType extends typeChecker.Type
 //
 //class TypeCheckingLibrary {
-//  val anyLambdaType: Type = new LambdaType(AnyType, AnyType)
+//  val anyLambdaType: typeChecker.Type = new typeChecker.LambdaType(AnyType, AnyType)
 //
 //  def getType(expression: Expression): ScopedType = expression match {
 //    case Call(callee, argument) => (getType(callee), getType(argument)) match {
@@ -54,8 +55,8 @@
 //    }
 //    case If(condition, thenExpression, elseExpression) => {
 //      val conditionType = getType(condition)
-//      if (!conditionType.equals(IntType))
-//        throw new TypesDoNotMatchException(conditionType, IntType)
+//      if (!conditionType.equals(typeChecker.IntType))
+//        throw new TypesDoNotMatchException(conditionType, typeChecker.IntType)
 //
 //      val thenType = getType(thenExpression)
 //      val elseType = getType(elseExpression)
