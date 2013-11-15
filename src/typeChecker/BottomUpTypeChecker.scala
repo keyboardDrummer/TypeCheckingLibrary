@@ -3,34 +3,31 @@ package typeChecker
 import ast._
 
 class BottomUpTypeChecker {
-  val variableTypes = new StackedMap[String,Type]()
+  val variableTypes = new StackedMap[String, Type]()
   variableTypes.push()
 
-  def checkEquals(first: Type, second: Type) : Unit = {
-    first match {
+  def checkIsAssignableTo(target: Type, value: Type): Unit = {
+    evaluateType(value) match {
       case VariableType(name) => {
-        variableTypes.get(name) match {
-          case Some(firstValue) => checkEquals(firstValue,second)
-          case None => variableTypes.put(name,second)
-        }
+        variableTypes.put(name, target)
       }
-      case _ => second match {
-        case VariableType(_) => checkEquals(second,first)
-        case _ => {
-          (first,second) match {
-            case (LambdaType(firstInput,firstOutput),LambdaType(secondInput,secondOutput)) => {
-              checkEquals(firstInput,secondInput)
-              checkEquals(firstOutput,secondOutput)
-            }
-            case (IntType,IntType) => {}
-            case _ => throw new RuntimeException(s"type $first does not match type $second")
-          }
+      case newValue => (evaluateType(target), newValue) match {
+        case (LambdaType(firstInput, firstOutput), LambdaType(secondInput, secondOutput)) => {
+          checkIsAssignableTo(firstInput, secondInput)
+          checkIsAssignableTo(secondOutput, firstOutput)
         }
+        case (IntType, IntType) => {}
+        case _ => throw new RuntimeException(s"type $target does not match type $value")
       }
     }
   }
 
-  def getType(expression: Expression) : Type = {
+  def checkEquals(first: Type, second: Type): Unit = {
+    checkIsAssignableTo(first, second)
+    checkIsAssignableTo(second, first)
+  }
+
+  def getType(expression: Expression): Type = {
     val innerType = getTypeInner(expression)
     evaluateType(innerType)
   }
@@ -38,20 +35,20 @@ class BottomUpTypeChecker {
   def evaluateType(innerType: Type): Type = {
     innerType match {
       case innerType@VariableType(name) => variableTypes.get(name).fold[Type](innerType)(evaluateType)
-      case LambdaType(input,output) => new LambdaType(evaluateType(input),evaluateType(output))
+      case LambdaType(input, output) => new LambdaType(evaluateType(input), evaluateType(output))
       case _ => innerType
     }
   }
 
-  def getTypeInner(expression: Expression) : Type = expression match {
+  def getTypeInner(expression: Expression): Type = expression match {
     case IntValue(_) => IntType
-    case Call(callee,argument) => {
+    case Call(callee, argument) => {
       variableTypes.push()
       val calleeType = getType(callee)
       val argumentType = getType(argument)
       val freshVariable = System.nanoTime()
       val outputType = new VariableType(freshVariable.toString)
-      checkEquals(calleeType, new LambdaType(argumentType, outputType))
+      checkIsAssignableTo(new LambdaType(argumentType, outputType), calleeType)
       val result = evaluateType(outputType)
       variableTypes.pop()
       result
@@ -59,32 +56,32 @@ class BottomUpTypeChecker {
     case Variable(name) => {
       new VariableType(name)
     }
-    case If(condition,elseExpression,thenExpression) => {
-      checkEquals(IntType, getType(condition))
+    case If(condition, elseExpression, thenExpression) => {
+      checkIsAssignableTo(IntType, getType(condition))
       val elseType = getType(elseExpression)
       val thenType = getType(thenExpression)
       checkEquals(elseType, thenType)
       elseType
     }
     case Lambda(name, body) => {
-      new LambdaType(new VariableType(name),getType(body))
+      new LambdaType(new VariableType(name), getType(body))
     }
-    case Let(name,value,body) => {
+    case Let(name, value, body) => {
       variableTypes.push()
       val valueType = getType(value)
-      checkEquals(new VariableType(name),valueType)
+      checkIsAssignableTo(valueType, new VariableType(name))
       val result = getType(body)
       variableTypes.pop()
       result
     }
-    case Addition(first,second) => {
-      checkEquals(getType(first),IntType)
-      checkEquals(getType(second),IntType)
+    case Addition(first, second) => {
+      checkIsAssignableTo(IntType, getType(first))
+      checkIsAssignableTo(IntType, getType(second))
       IntType
     }
-    case Equals(first,second) => {
-      checkEquals(getType(first),IntType)
-      checkEquals(getType(second),IntType)
+    case Equals(first, second) => {
+      checkIsAssignableTo(IntType, getType(first))
+      checkIsAssignableTo(IntType, getType(second))
       IntType
     }
   }
