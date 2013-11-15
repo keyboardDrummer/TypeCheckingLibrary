@@ -1,35 +1,6 @@
 package typeChecker
 
 import ast._
-import scala.collection.mutable
-import scala.Option
-
-class Type {
-
-}
-
-object IntType extends Type {
-
-}
-
-case class LambdaType(input: Type, output: Type) extends Type
-case class VariableType(name: String) extends Type
-
-class StackedMap[K,V] extends mutable.Map[K,V] {
-  val stack = new mutable.Stack[mutable.Map[K,V]]()
-
-  def push() = stack.push(new mutable.HashMap[K,V]())
-  def pop() = stack.pop()
-
-  def current = stack.top
-  def +=(kv: (K, V)): this.type = { current.+=(kv); this }
-
-  def iterator: Iterator[(K, V)] = throw new NotImplementedError()
-
-  def get(key: K): Option[V] = stack.map(map => map.get(key)).flatten.headOption
-
-  def -=(key: K): this.type = throw new NotImplementedError()
-}
 
 class BottomUpTypeChecker {
   val variableTypes = new StackedMap[String,Type]()
