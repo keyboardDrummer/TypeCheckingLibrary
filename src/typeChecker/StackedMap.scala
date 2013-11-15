@@ -11,7 +11,10 @@ class StackedMap[K,V] extends mutable.Map[K,V] {
   def current = stack.top
   def +=(kv: (K, V)): this.type = { current.+=(kv); this }
 
-  def iterator: Iterator[(K, V)] = throw new NotImplementedError()
+  def iterator: Iterator[(K, V)] = {
+    val keys = stack.map(map => map.keySet).fold(Set.empty[K])((a,b) => a.union(b))
+    keys.map(key => (key,this(key))).iterator
+  }
 
   def get(key: K): Option[V] = stack.map(map => map.get(key)).flatten.headOption
 
