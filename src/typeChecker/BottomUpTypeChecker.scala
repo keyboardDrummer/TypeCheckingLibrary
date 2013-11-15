@@ -33,6 +33,7 @@ class StackedMap[K,V] extends mutable.Map[K,V] {
 
 class BottomUpTypeChecker {
   val variableTypes = new StackedMap[String,Type]()
+  variableTypes.push()
 
   def checkEquals(first: Type, second: Type) : Unit = {
     first match {
@@ -45,8 +46,14 @@ class BottomUpTypeChecker {
       case _ => second match {
         case VariableType(_) => checkEquals(second,first)
         case _ => {
-          if (first != second)
-            throw new RuntimeException(s"type $first is not equal to type $second")
+          (first,second) match {
+            case (LambdaType(firstInput,firstOutput),LambdaType(secondInput,secondOutput)) => {
+              checkEquals(firstInput,secondInput)
+              checkEquals(firstOutput,secondOutput)
+            }
+            case (IntType,IntType) => {}
+            case _ => throw new RuntimeException(s"type $first does not match type $second")
+          }
         }
       }
     }
@@ -55,13 +62,14 @@ class BottomUpTypeChecker {
   def getType(expression: Expression) : Type = expression match {
     case IntValue(_) => IntType
     case Call(callee,argument) => {
-      getType(callee) match {
-        case LambdaType(input, output) => {
-          val argumentType = getType(argument)
-          checkEquals(input, argumentType)
-          output
-        }
-      } 
+      variableTypes.push()
+      val calleeType = getType(callee)
+      val argumentType = getType(argument)
+      val freshVariable = System.nanoTime()
+      val outputType = new VariableType(freshVariable.toString)
+      checkEquals(calleeType, new LambdaType(argumentType, outputType))
+      variableTypes.pop()
+      outputType
     }
     case Variable(name) => {
       new VariableType(name)
@@ -80,8 +88,9 @@ class BottomUpTypeChecker {
       variableTypes.push()
       val valueType = getType(value)
       checkEquals(new VariableType(name),valueType)
-      variableTypes.put(name,valueType)
-      getType(body)
+      val result = getType(body)
+      variableTypes.pop()
+      result
     }
     case Addition(first,second) => {
       checkEquals(getType(first),IntType)
