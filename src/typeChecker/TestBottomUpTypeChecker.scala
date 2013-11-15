@@ -1,8 +1,12 @@
 package typeChecker
 
 import org.junit.Assert._
-import test.TestSomeTypeChecker
-import ast.Expression
+import test.{TestMetaProgramming, TestSomeTypeChecker}
+import ast._
+import org.junit.Test
+import typeChecker.LambdaType
+import ast.Lambda
+import typeChecker.VariableType
 
 class TestBottomUpTypeChecker extends TestSomeTypeChecker {
 
@@ -23,4 +27,27 @@ class TestBottomUpTypeChecker extends TestSomeTypeChecker {
   def assertCheckFailure(expression: Expression): Unit =
     assertException(classOf[RuntimeException], () => new BottomUpTypeChecker().getType(expression))
 
+  @Test
+  def typeCheckIdentity() {
+    val identity = new Let("identity", new Lambda("x", "x"), new If(new Call("identity",1),"identity","identity"))
+    val result = new BottomUpTypeChecker().getType(identity)
+    result match {
+      case LambdaType(input,output) => input == output && input.isInstanceOf[VariableType]
+      case _ => fail()
+    }
+  }
+
+//  @Test
+//  def typeCheckMetaProgramming() {
+//    val constX = TestMetaProgramming.createConstX
+//
+//    def callConstX(i: Integer) = new Call(constX,new IntValue(i))
+//    def applyArguments(callee: Expression, arguments: List[Expression]) = arguments.fold(callee)((acc,argument) => new Call(acc,argument))
+//
+//    List.range(0,3).map((i) => {
+//      val input = applyArguments(callConstX(i), List.range(0, i+1).map(i => new IntValue(i)))
+//      val typ = new BottomUpTypeChecker().getType(input)
+//      assertCheckSuccess(input)
+//    })
+//  }
 }
