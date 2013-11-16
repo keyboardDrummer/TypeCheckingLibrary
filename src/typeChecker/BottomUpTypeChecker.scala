@@ -9,7 +9,10 @@ class BottomUpTypeChecker {
   def checkIsAssignableTo(target: Type, value: Type): Unit = {
     evaluateType(value) match {
       case VariableType(name) => {
-        variableTypes.put(name, target)
+        target match {
+          case VariableType(targetName) if name == targetName =>
+          case _ => variableTypes.put(name, target)
+        }
       }
       case newValue => (evaluateType(target), newValue) match {
         case (LambdaType(firstInput, firstOutput), LambdaType(secondInput, secondOutput)) => {
