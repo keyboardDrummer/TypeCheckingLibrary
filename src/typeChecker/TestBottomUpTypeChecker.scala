@@ -37,17 +37,27 @@ class TestBottomUpTypeChecker extends TestSomeTypeChecker {
     }
   }
 
-//  @Test
-//  def typeCheckMetaProgramming() {
-//    val constX = TestMetaProgramming.createConstX
-//
-//    def callConstX(i: Integer) = new Call(constX,new IntValue(i))
-//    def applyArguments(callee: Expression, arguments: List[Expression]) = arguments.fold(callee)((acc,argument) => new Call(acc,argument))
-//
-//    List.range(0,3).map((i) => {
-//      val input = applyArguments(callConstX(i), List.range(0, i+1).map(i => new IntValue(i)))
-//      val typ = new BottomUpTypeChecker().getType(input)
-//      assertCheckSuccess(input)
-//    })
-//  }
+  @Test
+  def typeCheckIdentityInIf() {
+    val identity = new Let("identity", new Lambda("x", "x"), new If(3,"identity",new Lambda("y", new IntValue(3) + "y")))
+    val result = new BottomUpTypeChecker().getType(identity)
+    result match {
+      case LambdaType(input,output) => input == output && input == IntType
+      case _ => fail()
+    }
+  }
+
+  @Test
+  def typeCheckMetaProgramming() {
+    val constX = TestMetaProgramming.createConstX
+
+    def callConstX(i: Integer) = new Call(constX,new IntValue(i))
+    def applyArguments(callee: Expression, arguments: List[Expression]) = arguments.fold(callee)((acc,argument) => new Call(acc,argument))
+
+    List.range(0,3).map((i) => {
+      val input = applyArguments(callConstX(i), List.range(0, i+1).map(i => new IntValue(i)))
+      val typ = new BottomUpTypeChecker().getType(input)
+      assertCheckSuccess(input)
+    })
+  }
 }

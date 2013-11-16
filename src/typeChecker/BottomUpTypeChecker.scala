@@ -14,7 +14,13 @@ class BottomUpTypeChecker {
           case _ => variableTypes.put(name, target)
         }
       }
-      case newValue => (evaluateType(target), newValue) match {
+      case newValue =>
+        if (target.isInstanceOf[VariableType])
+        {
+          checkIsAssignableTo(value,target)
+          return
+        }
+        (evaluateType(target), newValue) match {
         case (LambdaType(firstInput, firstOutput), LambdaType(secondInput, secondOutput)) => {
           checkIsAssignableTo(firstInput, secondInput)
           checkIsAssignableTo(secondOutput, firstOutput)
@@ -27,7 +33,7 @@ class BottomUpTypeChecker {
 
   def checkEquals(first: Type, second: Type): Unit = {
     checkIsAssignableTo(first, second)
-    checkIsAssignableTo(second, first)
+    // checkIsAssignableTo(second, first)
   }
 
   def getType(expression: Expression): Type = {
