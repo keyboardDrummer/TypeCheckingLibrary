@@ -48,6 +48,12 @@ class TestBottomUpTypeChecker extends TestSomeTypeChecker {
   }
 
   @Test
+  def doubleUseOfIdentity() {
+    val identity = new Let("identity", new Lambda("x", "x"), new If(3,new Call("identity",3),new Call(new Call("identity","identity"),4)))
+    assertCheckSuccess(identity)
+  }
+
+  @Test
   def typeCheckMetaProgramming() {
     val constX = TestMetaProgramming.createConstX
 
