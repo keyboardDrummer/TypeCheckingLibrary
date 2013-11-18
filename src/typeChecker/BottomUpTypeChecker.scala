@@ -14,19 +14,22 @@ class BottomUpTypeChecker {
           case _ => variableTypes.put(name, target)
         }
       }
-      case newValue =>
+      case newValue => {
         if (target.isInstanceOf[VariableType])
         {
           checkIsAssignableTo(value,target)
           return
         }
-        (evaluateType(target), newValue) match {
-        case (LambdaType(firstInput, firstOutput), LambdaType(secondInput, secondOutput)) => {
-          checkIsAssignableTo(firstInput, secondInput)
-          checkIsAssignableTo(secondOutput, firstOutput)
+        val newTarget = evaluateType(target)
+        (newTarget, newValue) match {
+          case (LambdaType(firstName, firstInput, firstOutput), LambdaType(secondName, secondInput, secondOutput)) => {
+            var freshVariable = getFreshVariable
+            checkIsAssignableTo(firstInput, secondInput)
+            checkIsAssignableTo(secondOutput, firstOutput)
+          }
+          case (IntType, IntType) => {}
+          case _ => throw new RuntimeException(s"type $target does not match type $value")
         }
-        case (IntType, IntType) => {}
-        case _ => throw new RuntimeException(s"type $target does not match type $value")
       }
     }
   }
@@ -44,7 +47,7 @@ class BottomUpTypeChecker {
   def evaluateType(innerType: Type): Type = {
     innerType match {
       case innerType@VariableType(name) => variableTypes.get(name).fold[Type](innerType)(evaluateType)
-      case LambdaType(input, output) => new LambdaType(evaluateType(input), evaluateType(output))
+      case LambdaType(name, input, output) => new LambdaType(name, evaluateType(input), evaluateType(output))
       case _ => innerType
     }
   }
@@ -55,9 +58,8 @@ class BottomUpTypeChecker {
       variableTypes.push()
       val calleeType = getType(callee)
       val argumentType = getType(argument)
-      val freshVariable = System.nanoTime()
-      val outputType = new VariableType(freshVariable.toString)
-      checkIsAssignableTo(new LambdaType(argumentType, outputType), calleeType)
+      val outputType = getFreshVariable
+      checkIsAssignableTo(new LambdaType(outputType.name, argumentType, outputType), calleeType)
       val result = evaluateType(outputType)
       variableTypes.pop()
       result
@@ -73,7 +75,7 @@ class BottomUpTypeChecker {
       elseType
     }
     case Lambda(name, body) => {
-      new LambdaType(new VariableType(name), getType(body))
+      new LambdaType(name, new VariableType(name), getType(body))
     }
     case Let(name, value, body) => {
       variableTypes.push()
@@ -95,4 +97,10 @@ class BottomUpTypeChecker {
     }
   }
 
+
+  def getFreshVariable: VariableType = {
+    val freshVariable = System.nanoTime()
+    val outputType = new VariableType(freshVariable.toString)
+    outputType
+  }
 }

@@ -32,7 +32,7 @@ class TestBottomUpTypeChecker extends TestSomeTypeChecker {
     val identity = new Let("identity", new Lambda("x", "x"), new If(new Call("identity",1),"identity","identity"))
     val result = new BottomUpTypeChecker().getType(identity)
     result match {
-      case LambdaType(input,output) => input == output && input.isInstanceOf[VariableType]
+      case LambdaType(_, input,output) => input == output && input.isInstanceOf[VariableType]
       case _ => fail()
     }
   }
@@ -42,7 +42,7 @@ class TestBottomUpTypeChecker extends TestSomeTypeChecker {
     val identity = new Let("identity", new Lambda("x", "x"), new If(3,"identity",new Lambda("y", new IntValue(3) + "y")))
     val result = new BottomUpTypeChecker().getType(identity)
     result match {
-      case LambdaType(input,output) => input == output && input == IntType
+      case LambdaType(_, input,output) => input == output && input == IntType
       case _ => fail()
     }
   }
