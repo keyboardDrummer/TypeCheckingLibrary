@@ -5,7 +5,6 @@ import test.{TestMetaProgramming, TestSomeTypeChecker}
 import ast._
 import org.junit.Test
 import ast.Lambda
-import usages.{TypesDoNotMatchException, TopDownTypeChecker}
 
 class TestBottomUpTypeChecker extends TestSomeTypeChecker {
 
@@ -30,7 +29,7 @@ class TestBottomUpTypeChecker extends TestSomeTypeChecker {
   def typeCheckIdentity() {
     val identity = new Let("identity", new Lambda("x", "x"), new If(new Call("identity",1),"identity","identity"))
     val result = TopDownTypeChecker.getType(identity)
-    val variable = TypeVariable(0)
+    val variable = TypeVariable(7)
     assertEquals(new Polymorphic(variable,new LambdaType(variable,variable)),result)
   }
 

@@ -1,12 +1,8 @@
-package usages
+package typeChecker
 
 import ast._
-import typeChecker._
-import scala.collection.immutable
-import typeChecker.LambdaType
 import ast.Let
 import ast.Lambda
-import typeChecker.TypeVariable
 import ast.Call
 import ast.Variable
 import ast.IntValue
@@ -22,7 +18,8 @@ class CanOnlyCallALambdaException extends RuntimeException
 object TopDownTypeChecker {
   def getType(expression: Expression) = {
     val checker: TopDownTypeChecker = new TopDownTypeChecker()
-    checker.evaluateType(checker.getType(expression))
+    val result: Type = checker.getType(expression)
+    checker.evaluateType(result)
   }
 }
 
@@ -32,43 +29,45 @@ private class TopDownTypeChecker {
   val environment = new StackedMap[String, Type]()
   environment.push()
 
-  def checkIsAssignableToNoVariables(target: Type, value: Type) : Unit = (target,value) match
+  def checkIsAssignableToNoVariables(target: Type, value: Type) : Type = (target,value) match
   {
     case (Polymorphic(name,typ),_) => {
       val fresh = getFreshVariable
-      typeVariables.put(name,fresh)
-      checkIsAssignableToNoVariables(typ,value)
-      typeVariables.remove(name)
+      checkPolymorphic(fresh, checkIsAssignableToNoVariables(replaceTypeVariable(typ,name,fresh),value))
     }
     case (_,Polymorphic(name,typ)) => {
       val fresh = getFreshVariable
-      typeVariables.put(name,fresh)
-      checkIsAssignableToNoVariables(target,typ)
-      typeVariables.remove(name)
+      checkPolymorphic(fresh, checkIsAssignableToNoVariables(target, replaceTypeVariable(typ,name,fresh)))
     }
     case (LambdaType(targetInput, targetOutput), LambdaType(valueInput, valueOutput)) => {
-      checkIsAssignableTo(targetInput, valueInput)
-      checkIsAssignableTo(valueOutput, targetOutput)
+      val input = checkIsAssignableTo(targetInput, valueInput)
+      val output = checkIsAssignableTo(valueOutput, targetOutput)
+      LambdaType(input,output)
     }
-    case (IntType,IntType) =>
+    case (IntType,IntType) => IntType
     case _ => throw new TypesDoNotMatchException(target, value)
   }
 
-  def checkIsAssignableTo(target: Type, value: Type): Unit = (target,value) match {
-    case (targetVariable: TypeVariable,_) =>
-      evaluateType(targetVariable) match {
-        case _:TypeVariable => typeVariables.put(targetVariable, value)
-        case typ => checkIsAssignableTo(typ,value)
-      }
-    case (_,valueVariable: TypeVariable) =>
-      evaluateType(valueVariable) match {
-        case _:TypeVariable  => typeVariables.put(valueVariable, target)
-        case typ => checkIsAssignableTo(target,typ)
-      }
-    case _ => checkIsAssignableToNoVariables(target,value)
+  def checkIsAssignableTo(target: Type, value: Type): Type = {
+    val evaluatedTarget = evaluateType(target)
+    val evaluatedValue = evaluateType(value)
+    checkIsAssignableToEvaluated(evaluatedTarget,evaluatedValue)
   }
 
-  def checkEquals(first: Type, second: Type) : Unit = {
+  def checkIsAssignableToEvaluated(target: Type, value: Type): Type = {
+    (target,value) match {
+      case (targetVariable: TypeVariable, valueVariable: TypeVariable) if targetVariable == valueVariable => targetVariable
+      case (targetVariable: TypeVariable,_) =>
+        typeVariables.put(targetVariable, value)
+        value
+      case (_,valueVariable: TypeVariable) =>
+        typeVariables.put(valueVariable, target)
+        target
+      case _ => checkIsAssignableToNoVariables(target,value)
+    }
+  }
+
+  def checkEquals(first: Type, second: Type) : Type = {
     checkIsAssignableTo(first,second)
     checkIsAssignableTo(second,first)
   }
@@ -88,8 +87,6 @@ private class TopDownTypeChecker {
       val thenType = getType(thenExpression)
       val elseType = getType(elseExpression)
       checkEquals(thenType,elseType)
-
-      thenType
     }
     case Lambda(name, body) => {
       environment.push()
@@ -98,10 +95,7 @@ private class TopDownTypeChecker {
       val bodyType = getType(body)
       val result = LambdaType( environment(name), bodyType)
       environment.pop()
-      if (typeVariables.get(fresh).isEmpty)
-        new Polymorphic(fresh,result)
-      else
-        result
+      checkPolymorphic(fresh, result)
     }
     case Variable(name) => {
       environment(name)
@@ -129,6 +123,14 @@ private class TopDownTypeChecker {
     }
   }
 
+
+  def checkPolymorphic(fresh: TypeVariable, result: Type): Type = {
+    if (typeVariables.get(fresh).isEmpty)
+      new Polymorphic(fresh, result)
+    else
+      result
+  }
+
   def getFreshVariable: TypeVariable = {
     val freshVariable = freshVariableCounter
     freshVariableCounter += 1
@@ -142,5 +144,17 @@ private class TopDownTypeChecker {
       case Polymorphic(name, body) => new Polymorphic(name, evaluateType(body))
       case _ => innerType
     }
+  }
+
+  def replaceTypeVariable(typ: Type, original: TypeVariable, replacement: TypeVariable) =
+  {
+    def helper(typ: Type) : Type = typ match
+    {
+      case _:TypeVariable if typ == original => replacement
+      case LambdaType(input,output) => new LambdaType(helper(input),helper(output))
+      case Polymorphic(name,body) => if (name == original) typ else new Polymorphic(name,helper(body))
+      case _ => typ
+    }
+    helper(typ)
   }
 }
