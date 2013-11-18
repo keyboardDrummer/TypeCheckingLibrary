@@ -4,9 +4,8 @@ import org.junit.Assert._
 import test.{TestMetaProgramming, TestSomeTypeChecker}
 import ast._
 import org.junit.Test
-import typeChecker.LambdaType
 import ast.Lambda
-import typeChecker.VariableType
+import usages.{TypesDoNotMatchException, TopDownTypeChecker}
 
 class TestBottomUpTypeChecker extends TestSomeTypeChecker {
 
@@ -22,29 +21,31 @@ class TestBottomUpTypeChecker extends TestSomeTypeChecker {
   }
 
   def assertCheckSuccess(expression: Expression): Unit =
-    assert(!new BottomUpTypeChecker().getType(expression).isInstanceOf[VariableType])
+    assert(!TopDownTypeChecker.getType(expression).isInstanceOf[TypeVariable])
 
   def assertCheckFailure(expression: Expression): Unit =
-    assertException(classOf[RuntimeException], () => new BottomUpTypeChecker().getType(expression))
+    assertException(classOf[TypesDoNotMatchException], () => TopDownTypeChecker.getType(expression))
 
   @Test
   def typeCheckIdentity() {
     val identity = new Let("identity", new Lambda("x", "x"), new If(new Call("identity",1),"identity","identity"))
-    val result = new BottomUpTypeChecker().getType(identity)
-    result match {
-      case LambdaType(_, input,output) => input == output && input.isInstanceOf[VariableType]
-      case _ => fail()
-    }
+    val result = TopDownTypeChecker.getType(identity)
+    val variable = TypeVariable(0)
+    assertEquals(new Polymorphic(variable,new LambdaType(variable,variable)),result)
   }
 
   @Test
   def typeCheckIdentityInIf() {
+    val identity = new Let("identity", new Lambda("x", "x"), new If(3,new Lambda("y", new IntValue(3) + "y"),"identity"))
+    val result = TopDownTypeChecker.getType(identity)
+    assertEquals(new LambdaType(IntType,IntType),result)
+  }
+
+  @Test
+  def typeCheckIdentityInIf2() {
     val identity = new Let("identity", new Lambda("x", "x"), new If(3,"identity",new Lambda("y", new IntValue(3) + "y")))
-    val result = new BottomUpTypeChecker().getType(identity)
-    result match {
-      case LambdaType(_, input,output) => input == output && input == IntType
-      case _ => fail()
-    }
+    val result = TopDownTypeChecker.getType(identity)
+    assertEquals(new LambdaType(IntType,IntType),result)
   }
 
   @Test
@@ -62,7 +63,7 @@ class TestBottomUpTypeChecker extends TestSomeTypeChecker {
 
     List.range(0,3).map((i) => {
       val input = applyArguments(callConstX(i), List.range(0, i+1).map(i => new IntValue(i)))
-      val typ = new BottomUpTypeChecker().getType(input)
+      val typ = TopDownTypeChecker.getType(input)
       assertCheckSuccess(input)
     })
   }

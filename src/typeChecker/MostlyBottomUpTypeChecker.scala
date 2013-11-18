@@ -2,18 +2,11 @@
 //
 //import ast._
 //
+//class MostlyBottomUpTypeChecker {
+//  val variableTypes = new StackedMap[String, Type]()
+//  variableTypes.push()
 //
-//class BottomUpTypeChecker {
-//  object ScopedType
-//  {
-//    implicit def typeToScoped(typ: Type) = new ScopedType(typ)
-//  }
-//
-//  type Env = Map[String,Type]
-//  case class ScopedType(typ: Type, env: Env = Map.empty)
-//
-//  var freshVariableCounter: Int = 0
-//  def checkIsAssignableTo(target: ScopedType, value: ScopedType): Env = {
+//  def checkIsAssignableTo(target: Type, value: Type): Unit = {
 //    evaluateType(value) match {
 //      case TypeVariable(name) => {
 //        target match {
@@ -51,14 +44,28 @@
 //    }
 //  }
 //
-//  def checkEquals(first: ScopedType, second: ScopedType): Env = {
+//  def checkEquals(first: Type, second: Type): Unit = {
 //    checkIsAssignableTo(first, second)
 //    // checkIsAssignableTo(second, first)
 //  }
 //
-//  def getType(expression: Expression, env: Env): ScopedType = expression match {
+//  def getType(expression: Expression): Type = {
+//    val innerType = getTypeInner(expression)
+//    evaluateType(innerType)
+//  }
+//
+//  def evaluateType(innerType: Type): Type = {
+//    innerType match {
+//      case innerType@TypeVariable(name) => variableTypes.get(name).fold[Type](innerType)(evaluateType)
+//      case LambdaType(name, input, output) => new LambdaType(name, evaluateType(input), evaluateType(output))
+//      case _ => innerType
+//    }
+//  }
+//
+//  def getTypeInner(expression: Expression): Type = expression match {
 //    case IntValue(_) => IntType
 //    case Call(callee, argument) => {
+//      variableTypes.push()
 //      val calleeType = getType(callee)
 //      val argumentType = getType(argument)
 //      val outputType = getFreshVariable
@@ -71,39 +78,39 @@
 //      new TypeVariable(name)
 //    }
 //    case If(condition, elseExpression, thenExpression) => {
-//      val env1 = checkIsAssignableTo(IntType, getType(condition, env))
-//      val elseType = getType(elseExpression, env1)
-//      val thenType = getType(thenExpression, elseType.env)
-//      val env2 = checkEquals(elseType, thenType)
-//      new ScopedType(elseType.typ,env2)
+//      checkIsAssignableTo(IntType, getType(condition))
+//      val elseType = getType(elseExpression)
+//      val thenType = getType(thenExpression)
+//      checkEquals(elseType, thenType)
+//      elseType
 //    }
 //    case Lambda(name, body) => {
-//      val scopedBodyType = getType(body, env)
-//      new ScopedType(new LambdaType(name, new TypeVariable(name), scopedBodyType.typ), scopedBodyType.env)
+//      new LambdaType(name, new TypeVariable(name), getType(body))
 //    }
-//
 //    case Let(name, value, body) => {
-//      val valueType = getType(value, env)
-//      val env2 = checkIsAssignableTo(valueType, new TypeVariable(name))
-//      getType(body, env2)
+//      variableTypes.push()
+//      val valueType = getType(value)
+//      checkIsAssignableTo(valueType, new TypeVariable(name))
+//      val result = getType(body)
+//      variableTypes.pop()
+//      result
 //    }
 //    case Addition(first, second) => {
-//      val firstType = getType(first, env)
-//      val env1 = checkIsAssignableTo(IntType, firstType)
-//      val env2 = checkIsAssignableTo(IntType, getType(second, env1))
-//      new ScopedType(IntType,env2)
+//      checkIsAssignableTo(IntType, getType(first))
+//      checkIsAssignableTo(IntType, getType(second))
+//      IntType
 //    }
 //    case Equals(first, second) => {
-//      val firstType = getType(first, env)
-//      val env1 = checkIsAssignableTo(IntType, firstType)
-//      val env2 = checkIsAssignableTo(IntType, getType(second, env1))
-//      new ScopedType(IntType,env2)
+//      checkIsAssignableTo(IntType, getType(first))
+//      checkIsAssignableTo(IntType, getType(second))
+//      IntType
 //    }
 //  }
 //
+//
 //  def getFreshVariable: TypeVariable = {
-//    val freshVariable = freshVariableCounter
-//    freshVariableCounter += 1
-//    new TypeVariable(freshVariable.toString)
+//    val freshVariable = System.nanoTime()
+//    val outputType = new TypeVariable(freshVariable.toString)
+//    outputType
 //  }
 //}

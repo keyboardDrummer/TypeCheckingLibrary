@@ -7,13 +7,15 @@
     <file path="/AbstractMachine.scala" changelist="bc502902-59af-43aa-a47c-ef568e6ad6bf" time="1384514005070" ignored="false" />
     <file path="/BottomUpTypeChecking.scala" changelist="bc502902-59af-43aa-a47c-ef568e6ad6bf" time="1384528217895" ignored="false" />
     <file path="$PROJECT_DIR$/.idea/workspace.xml" changelist="bc502902-59af-43aa-a47c-ef568e6ad6bf" time="1384526123735" ignored="false" />
-    <file path="/fragment.java" changelist="bc502902-59af-43aa-a47c-ef568e6ad6bf" time="1384532912303" ignored="false" />
+    <file path="/fragment.java" changelist="bc502902-59af-43aa-a47c-ef568e6ad6bf" time="1384783074389" ignored="false" />
     <file path="/TestSomeTypeChecker.scala" changelist="bc502902-59af-43aa-a47c-ef568e6ad6bf" time="1384527912396" ignored="false" />
-    <file path="/TestBottomUpTypeChecker.scala" changelist="bc502902-59af-43aa-a47c-ef568e6ad6bf" time="1384618360677" ignored="false" />
-    <file path="/BottomUpTypeChecker.scala" changelist="bc502902-59af-43aa-a47c-ef568e6ad6bf" time="1384617991965" ignored="false" />
-    <file path="/Type.scala" changelist="bc502902-59af-43aa-a47c-ef568e6ad6bf" time="1384617454139" ignored="false" />
+    <file path="/TestBottomUpTypeChecker.scala" changelist="bc502902-59af-43aa-a47c-ef568e6ad6bf" time="1384784504626" ignored="false" />
+    <file path="/BottomUpTypeChecker.scala" changelist="bc502902-59af-43aa-a47c-ef568e6ad6bf" time="1384778859079" ignored="false" />
+    <file path="/Type.scala" changelist="bc502902-59af-43aa-a47c-ef568e6ad6bf" time="1384784478580" ignored="false" />
     <file path="/TestMetaProgramming.scala" changelist="bc502902-59af-43aa-a47c-ef568e6ad6bf" time="1384530278127" ignored="false" />
     <file path="/StackedMap.scala" changelist="bc502902-59af-43aa-a47c-ef568e6ad6bf" time="1384532014669" ignored="false" />
+    <file path="/TopDownTypeChecker.scala" changelist="bc502902-59af-43aa-a47c-ef568e6ad6bf" time="1384784682536" ignored="false" />
+    <file path="/a.dummy" changelist="bc502902-59af-43aa-a47c-ef568e6ad6bf" time="1384784096121" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,8 +35,24 @@
     <disable_hints />
   </component>
   <component name="DebuggerManager">
+    <ui_properties default_suspend_policy="SuspendAll" default_condition_enabled="true" />
     <line_breakpoints default_suspend_policy="SuspendAll" default_condition_enabled="true">
-      <breakpoint url="file://$PROJECT_DIR$/src/typeChecker/BottomUpTypeChecker.scala" line="30" class="typeChecker.BottomUpTypeChecker" package="typeChecker">
+      <breakpoint url="file://$PROJECT_DIR$/src/typeChecker/MostlyBottomUpTypeChecker.scala" line="40" class="MostlyBottomUpTypeChecker.scala" package="">
+        <option name="ENABLED" value="true" />
+        <option name="LOG_ENABLED" value="false" />
+        <option name="LOG_EXPRESSION_ENABLED" value="false" />
+        <option name="REMOVE_AFTER_HIT" value="false" />
+        <option name="SUSPEND_POLICY" value="SuspendAll" />
+        <option name="SUSPEND" value="true" />
+        <option name="COUNT_FILTER_ENABLED" value="false" />
+        <option name="COUNT_FILTER" value="0" />
+        <option name="CONDITION_ENABLED" value="true" />
+        <option name="CLASS_FILTERS_ENABLED" value="false" />
+        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
+        <option name="CONDITION" value="" />
+        <option name="LOG_MESSAGE" value="" />
+      </breakpoint>
+      <breakpoint url="file://$PROJECT_DIR$/src/typeChecker/MostlyBottomUpTypeChecker.scala" line="13" class="MostlyBottomUpTypeChecker.scala" package="">
         <option name="ENABLED" value="true" />
         <option name="LOG_ENABLED" value="false" />
         <option name="LOG_EXPRESSION_ENABLED" value="false" />
@@ -86,7 +104,6 @@
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
     </breakpoint_any>
-    <ui_properties default_suspend_policy="SuspendAll" default_condition_enabled="true" />
     <breakpoint_rules />
     <ui_properties />
   </component>
@@ -96,37 +113,64 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="BottomUpTypeChecker.scala" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="ReflectiveCallable.class" pinned="false" current="false" current-in-tab="false">
+        <entry file="jar://$PROJECT_DIR$/lib/junit-4.5.jar!/org/junit/internal/runners/model/ReflectiveCallable.class">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="8" column="39" selection-start="261" selection-end="261" vertical-scroll-proportion="-5.44">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MostlyBottomUpTypeChecker.scala" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/typeChecker/MostlyBottomUpTypeChecker.scala">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="54" column="13" selection-start="1859" selection-end="1859" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="BottomUpTypeChecker.scala" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/typeChecker/BottomUpTypeChecker.scala">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="25" column="43" selection-start="827" selection-end="827" vertical-scroll-proportion="0.41055718">
+            <state line="16" column="33" selection-start="0" selection-end="3897" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="StackedMap.scala" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/typeChecker/StackedMap.scala">
+      <file leaf-file-name="TopDownTypeChecker.scala" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/typeChecker/TopDownTypeChecker.scala">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="18" column="0" selection-start="495" selection-end="495" vertical-scroll-proportion="0.0">
+            <state line="91" column="33" selection-start="3000" selection-end="3000" vertical-scroll-proportion="0.568662">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="TestSomeTypeChecker.scala" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/TestSomeTypeChecker.scala">
+      <file leaf-file-name="Some.class" pinned="false" current="false" current-in-tab="false">
+        <entry file="jar://C:/Program Files (x86)/scala/lib/scala-library.jar!/scala/Some.class">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="21" column="7" selection-start="542" selection-end="542" vertical-scroll-proportion="0.0">
+            <state line="1" column="17" selection-start="31" selection-end="31" vertical-scroll-proportion="-0.68">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Expression.scala" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/ast/Expression.scala">
+      <file leaf-file-name="Option.class" pinned="false" current="false" current-in-tab="false">
+        <entry file="jar://C:/Program Files (x86)/scala/lib/scala-library.jar!/scala/Option.class">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="42" column="0" selection-start="1633" selection-end="1633" vertical-scroll-proportion="0.0">
+            <state line="14" column="12" selection-start="675" selection-end="675" vertical-scroll-proportion="-7.28">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="TestMostlyBottomUpTypeChecker.scala" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/typeChecker/TestMostlyBottomUpTypeChecker.scala">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="28" column="11" selection-start="871" selection-end="1253" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -135,25 +179,16 @@
       <file leaf-file-name="TestBottomUpTypeChecker.scala" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/typeChecker/TestBottomUpTypeChecker.scala">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="37" column="3" selection-start="1153" selection-end="1153" vertical-scroll-proportion="0.0">
+            <state line="37" column="6" selection-start="1133" selection-end="1133" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="IntType.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="jar://C:/Program Files/Java/jdk1.7.0_40/src.zip!/com/sun/org/apache/xalan/internal/xsltc/compiler/util/IntType.java">
+      <file leaf-file-name="TestSomeTypeChecker.scala" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test/TestSomeTypeChecker.scala">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="55" column="19" selection-start="2493" selection-end="2493" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ReflectiveCallable.class" pinned="false" current="false" current-in-tab="false">
-        <entry file="jar://$PROJECT_DIR$/lib/junit-4.5.jar!/org/junit/internal/runners/model/ReflectiveCallable.class">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="11" column="38" selection-start="382" selection-end="382" vertical-scroll-proportion="0.0">
+            <state line="19" column="23" selection-start="525" selection-end="525" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -162,7 +197,7 @@
       <file leaf-file-name="Type.scala" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/typeChecker/Type.scala">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="5" column="33" selection-start="104" selection-end="104" vertical-scroll-proportion="0.0">
+            <state line="11" column="36" selection-start="258" selection-end="258" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -178,9 +213,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/src/ast/AbstractMachine.scala" />
-        <option value="$PROJECT_DIR$/src/ast/Expression.scala" />
-        <option value="$PROJECT_DIR$/src/usages/BottomUpTypeChecking.scala" />
         <option value="$PROJECT_DIR$/src/test/TestMachine.scala" />
         <option value="$PROJECT_DIR$/src/machine/TestMachine.scala" />
         <option value="$PROJECT_DIR$/src/test/TestSomeTypeChecker.scala" />
@@ -189,17 +221,22 @@
         <option value="$PROJECT_DIR$/src/usages/test.scala" />
         <option value="$PROJECT_DIR$/src/test/TestMetaProgramming.scala" />
         <option value="$PROJECT_DIR$/src/typeChecker/StackedMap.scala" />
-        <option value="$PROJECT_DIR$/src/typeChecker/Type.scala" />
+        <option value="$PROJECT_DIR$/partialEvalScala.iml" />
+        <option value="$PROJECT_DIR$/src/typeChecker/TypeCheckingLibrary.scala" />
         <option value="$PROJECT_DIR$/src/typeChecker/BottomUpTypeChecker.scala" />
+        <option value="$PROJECT_DIR$/src/typeChecker/MostlyBottomUpTypeChecker.scala" />
+        <option value="$PROJECT_DIR$/src/typeChecker/TestMostlyBottomUpTypeChecker.scala" />
+        <option value="$PROJECT_DIR$/src/typeChecker/Type.scala" />
         <option value="$PROJECT_DIR$/src/typeChecker/TestBottomUpTypeChecker.scala" />
+        <option value="$PROJECT_DIR$/src/typeChecker/TopDownTypeChecker.scala" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-9" />
-    <option name="y" value="-9" />
-    <option name="width" value="1612" />
-    <option name="height" value="870" />
+    <option name="x" value="-8" />
+    <option name="y" value="-8" />
+    <option name="width" value="1936" />
+    <option name="height" value="1176" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -229,7 +266,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -237,14 +273,6 @@
               <option name="myItemId" value="partialEvalScala" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="External Libraries" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="scala-library" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.NamedLibraryElementNode" />
-            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -252,17 +280,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="External Libraries" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="partialEvalScala" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="partialEvalScala" />
+              <option name="myItemId" value="partialEvaluationScala" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -272,7 +290,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="partialEvalScala" />
+              <option name="myItemId" value="partialEvaluationScala" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -290,7 +308,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="partialEvalScala" />
+              <option name="myItemId" value="partialEvaluationScala" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -312,7 +330,29 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="partialEvaluationScala" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="typeChecker" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="TopDownTypeChecker.scala" />
+              <option name="myItemType" value="org.jetbrains.plugins.scala.components.ScalaDefsProjectViewProvider$ScalaFileTreeNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
               <option name="myItemId" value="partialEvalScala" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="partialEvaluationScala" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -330,103 +370,52 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="partialEvalScala" />
+              <option name="myItemId" value="partialEvaluationScala" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="test" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="partialEvalScala" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="partialEvalScala" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="partialEvalScala" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="partialEvalScala" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ast" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="partialEvalScala" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="partialEvalScala" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="abstractRunners" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
       <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="project.structure.last.edited" value="Libraries" />
+    <property name="project.structure.last.edited" value="Project" />
     <property name="GoToFile.includeJavaFiles" value="false" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="recentsLimit" value="5" />
     <property name="MemberChooser.sorted" value="false" />
-    <property name="options.lastSelected" value="preferences.pluginManager" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/lib" />
+    <property name="options.lastSelected" value="preferences.keymap" />
+    <property name="last_opened_file_path" value="C:/Program Files (x86)/scala/lib" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="MemberChooser.copyJavadoc" value="false" />
     <property name="GoToClass.toSaveIncludeLibraries" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="MemberChooser.showClasses" value="true" />
     <property name="FullScreen" value="false" />
+    <property name="MemberChooser.showClasses" value="true" />
     <property name="GoToClass.includeLibraries" value="false" />
-    <property name="dynamic.classpath" value="false" />
-    <property name="options.searchVisible" value="true" />
     <property name="options.splitter.details.proportions" value="0.2" />
+    <property name="options.searchVisible" value="true" />
+    <property name="dynamic.classpath" value="false" />
   </component>
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="typeChecker" />
       <recent name="test" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\GitProjects\partialEvaluationScala\src\typeChecker" />
       <recent name="D:\Personal\GitHubProjects\partialEvalScala\src\abstractRunners" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.TestBottomUpTypeChecker.doubleUseOfIdentity">
-    <configuration default="false" name="TestBottomUpTypeChecker" type="JUnit" factoryName="JUnit" temporary="true">
+  <component name="RunManager" selected="JUnit.TestBottomUpTypeChecker">
+    <configuration default="false" name="TestMostlyBottomUpTypeChecker" type="JUnit" factoryName="JUnit" temporary="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
           <option name="PATTERN" value="typeChecker.*" />
@@ -437,7 +426,7 @@
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
       <option name="PACKAGE_NAME" value="typeChecker" />
-      <option name="MAIN_CLASS_NAME" value="typeChecker.TestBottomUpTypeChecker" />
+      <option name="MAIN_CLASS_NAME" value="typeChecker.TestMostlyBottomUpTypeChecker" />
       <option name="METHOD_NAME" />
       <option name="TEST_OBJECT" value="class" />
       <option name="VM_PARAMETERS" value="-ea" />
@@ -462,7 +451,7 @@
       <ConfigurationWrapper RunnerId="Run" />
       <method />
     </configuration>
-    <configuration default="false" name="TestBottomUpTypeChecker.typeCheckIdentity" type="JUnit" factoryName="JUnit" temporary="true">
+    <configuration default="false" name="TestMostlyBottomUpTypeChecker.typeCheckMetaProgramming" type="JUnit" factoryName="JUnit" temporary="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
           <option name="PATTERN" value="typeChecker.*" />
@@ -473,41 +462,7 @@
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
       <option name="PACKAGE_NAME" value="typeChecker" />
-      <option name="MAIN_CLASS_NAME" value="typeChecker.TestBottomUpTypeChecker" />
-      <option name="METHOD_NAME" value="typeCheckIdentity" />
-      <option name="TEST_OBJECT" value="method" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="moduleWithDependencies" />
-      </option>
-      <envs />
-      <patterns />
-      <RunnerSettings RunnerId="Debug">
-        <option name="DEBUG_PORT" value="" />
-        <option name="TRANSPORT" value="0" />
-        <option name="LOCAL" value="true" />
-      </RunnerSettings>
-      <RunnerSettings RunnerId="Run" />
-      <ConfigurationWrapper RunnerId="Debug" />
-      <ConfigurationWrapper RunnerId="Run" />
-      <method />
-    </configuration>
-    <configuration default="false" name="TestBottomUpTypeChecker.typeCheckMetaProgramming" type="JUnit" factoryName="JUnit" temporary="true">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
-        <pattern>
-          <option name="PATTERN" value="typeChecker.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <module name="partialEvalScala" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="typeChecker" />
-      <option name="MAIN_CLASS_NAME" value="typeChecker.TestBottomUpTypeChecker" />
+      <option name="MAIN_CLASS_NAME" value="typeChecker.TestMostlyBottomUpTypeChecker" />
       <option name="METHOD_NAME" value="typeCheckMetaProgramming" />
       <option name="TEST_OBJECT" value="method" />
       <option name="VM_PARAMETERS" value="-ea" />
@@ -530,7 +485,7 @@
       <ConfigurationWrapper RunnerId="Run" />
       <method />
     </configuration>
-    <configuration default="false" name="TestBottomUpTypeChecker.typeCheckIdentityInIf" type="JUnit" factoryName="JUnit" temporary="true">
+    <configuration default="false" name="TestMostlyBottomUpTypeChecker.typeCheckIdentityInIf" type="JUnit" factoryName="JUnit" temporary="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
           <option name="PATTERN" value="typeChecker.*" />
@@ -541,7 +496,7 @@
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
       <option name="PACKAGE_NAME" value="typeChecker" />
-      <option name="MAIN_CLASS_NAME" value="typeChecker.TestBottomUpTypeChecker" />
+      <option name="MAIN_CLASS_NAME" value="typeChecker.TestMostlyBottomUpTypeChecker" />
       <option name="METHOD_NAME" value="typeCheckIdentityInIf" />
       <option name="TEST_OBJECT" value="method" />
       <option name="VM_PARAMETERS" value="-ea" />
@@ -562,7 +517,41 @@
       <ConfigurationWrapper RunnerId="Debug" />
       <method />
     </configuration>
-    <configuration default="false" name="TestBottomUpTypeChecker.doubleUseOfIdentity" type="JUnit" factoryName="JUnit" temporary="true">
+    <configuration default="false" name="TestMostlyBottomUpTypeChecker.doubleUseOfIdentity" type="JUnit" factoryName="JUnit" temporary="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="typeChecker.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <module name="partialEvalScala" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="typeChecker" />
+      <option name="MAIN_CLASS_NAME" value="typeChecker.TestMostlyBottomUpTypeChecker" />
+      <option name="METHOD_NAME" value="doubleUseOfIdentity" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="moduleWithDependencies" />
+      </option>
+      <envs />
+      <patterns />
+      <RunnerSettings RunnerId="Debug">
+        <option name="DEBUG_PORT" value="" />
+        <option name="TRANSPORT" value="0" />
+        <option name="LOCAL" value="true" />
+      </RunnerSettings>
+      <RunnerSettings RunnerId="Run" />
+      <ConfigurationWrapper RunnerId="Debug" />
+      <ConfigurationWrapper RunnerId="Run" />
+      <method />
+    </configuration>
+    <configuration default="false" name="TestBottomUpTypeChecker" type="JUnit" factoryName="JUnit" temporary="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
           <option name="PATTERN" value="typeChecker.*" />
@@ -574,8 +563,8 @@
       <option name="ALTERNATIVE_JRE_PATH" />
       <option name="PACKAGE_NAME" value="typeChecker" />
       <option name="MAIN_CLASS_NAME" value="typeChecker.TestBottomUpTypeChecker" />
-      <option name="METHOD_NAME" value="doubleUseOfIdentity" />
-      <option name="TEST_OBJECT" value="method" />
+      <option name="METHOD_NAME" />
+      <option name="TEST_OBJECT" value="class" />
       <option name="VM_PARAMETERS" value="-ea" />
       <option name="PARAMETERS" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
@@ -602,40 +591,12 @@
       <option name="PROGRAM_PARAMETERS" />
       <method />
     </configuration>
-    <configuration default="true" type="Specs2RunConfiguration" factoryName="Specs2">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <extension name="scalaCoverage" />
-      <module name="" />
-      <setting name="path" value="" />
-      <setting name="package" value="" />
-      <setting name="vmparams" value="" />
-      <setting name="params" value="" />
-      <setting name="workingDirectory" value="$PROJECT_DIR$" />
-      <setting name="searchForTest" value="Across module dependencies" />
-      <setting name="testName" value="" />
-      <setting name="testKind" value="Class" />
-      <setting name="showProgressMessages" value="true" />
-      <method />
-    </configuration>
     <configuration default="true" type="Remote" factoryName="Remote">
       <option name="USE_SOCKET_TRANSPORT" value="true" />
       <option name="SERVER_MODE" value="false" />
       <option name="SHMEM_ADDRESS" value="javadebug" />
       <option name="HOST" value="localhost" />
       <option name="PORT" value="5005" />
-      <method />
-    </configuration>
-    <configuration default="true" type="Applet" factoryName="Applet">
-      <module name="" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="HTML_FILE_NAME" />
-      <option name="HTML_USED" value="false" />
-      <option name="WIDTH" value="400" />
-      <option name="HEIGHT" value="300" />
-      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
-      <option name="VM_PARAMETERS" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
       <method />
     </configuration>
     <configuration default="true" type="TestNG" factoryName="TestNG">
@@ -664,6 +625,19 @@
       <envs />
       <properties />
       <listeners />
+      <method />
+    </configuration>
+    <configuration default="true" type="Applet" factoryName="Applet">
+      <module name="" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="HTML_FILE_NAME" />
+      <option name="HTML_USED" value="false" />
+      <option name="WIDTH" value="400" />
+      <option name="HEIGHT" value="300" />
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <option name="VM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
       <method />
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
@@ -702,29 +676,20 @@
       <patterns />
       <method />
     </configuration>
-    <configuration default="true" type="ScalaScriptRunConfiguration" factoryName="Scala Script">
-      <module name="" />
-      <setting name="path" value="" />
-      <setting name="vmparams" value="" />
-      <setting name="consoleargs" value="" />
-      <setting name="params" value="" />
-      <setting name="workingDirectory" value="$PROJECT_DIR$" />
-      <method />
-    </configuration>
     <list size="5">
-      <item index="0" class="java.lang.String" itemvalue="JUnit.TestBottomUpTypeChecker" />
-      <item index="1" class="java.lang.String" itemvalue="JUnit.TestBottomUpTypeChecker.typeCheckIdentity" />
-      <item index="2" class="java.lang.String" itemvalue="JUnit.TestBottomUpTypeChecker.typeCheckMetaProgramming" />
-      <item index="3" class="java.lang.String" itemvalue="JUnit.TestBottomUpTypeChecker.typeCheckIdentityInIf" />
-      <item index="4" class="java.lang.String" itemvalue="JUnit.TestBottomUpTypeChecker.doubleUseOfIdentity" />
+      <item index="0" class="java.lang.String" itemvalue="JUnit.TestMostlyBottomUpTypeChecker" />
+      <item index="1" class="java.lang.String" itemvalue="JUnit.TestMostlyBottomUpTypeChecker.typeCheckMetaProgramming" />
+      <item index="2" class="java.lang.String" itemvalue="JUnit.TestMostlyBottomUpTypeChecker.typeCheckIdentityInIf" />
+      <item index="3" class="java.lang.String" itemvalue="JUnit.TestMostlyBottomUpTypeChecker.doubleUseOfIdentity" />
+      <item index="4" class="java.lang.String" itemvalue="JUnit.TestBottomUpTypeChecker" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="JUnit.TestBottomUpTypeChecker.doubleUseOfIdentity" />
-        <item index="1" class="java.lang.String" itemvalue="JUnit.TestBottomUpTypeChecker" />
-        <item index="2" class="java.lang.String" itemvalue="JUnit.TestBottomUpTypeChecker.typeCheckMetaProgramming" />
-        <item index="3" class="java.lang.String" itemvalue="JUnit.TestBottomUpTypeChecker.typeCheckIdentityInIf" />
-        <item index="4" class="java.lang.String" itemvalue="JUnit.TestBottomUpTypeChecker.typeCheckIdentity" />
+        <item index="0" class="java.lang.String" itemvalue="JUnit.TestBottomUpTypeChecker" />
+        <item index="1" class="java.lang.String" itemvalue="JUnit.TestMostlyBottomUpTypeChecker.doubleUseOfIdentity" />
+        <item index="2" class="java.lang.String" itemvalue="JUnit.TestMostlyBottomUpTypeChecker" />
+        <item index="3" class="java.lang.String" itemvalue="JUnit.TestMostlyBottomUpTypeChecker.typeCheckMetaProgramming" />
+        <item index="4" class="java.lang.String" itemvalue="JUnit.TestMostlyBottomUpTypeChecker.typeCheckIdentityInIf" />
       </list>
     </recent_temporary>
     <configuration name="&lt;template&gt;" type="WebApp" default="true" selected="false">
@@ -759,34 +724,34 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-9" y="-9" width="1612" height="870" extended-state="0" />
-    <editor active="true" />
+    <frame x="-8" y="-8" width="1936" height="1176" extended-state="6" />
+    <editor active="false" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39261284" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39156035" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2881356" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32875368" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="CDI" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.249354" sideWeight="0.6062323" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.398017" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24919957" sideWeight="0.60353285" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.39646712" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32947233" sideWeight="0.5991501" order="4" side_tool="true" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33002833" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3286119" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32947233" sideWeight="0.5991501" order="4" side_tool="true" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -822,7 +787,7 @@
     <option name="INCLUDE_TEXT_INTO_PATCH" value="false" />
     <option name="INCLUDE_TEXT_INTO_SHELF" value="false" />
     <option name="SHOW_FILE_HISTORY_DETAILS" value="true" />
-    <option name="SHOW_VCS_ERROR_NOTIFICATIONS" value="true" />
+    <option name="SHOW_VCS_ERROR_NOTIFICATIONS" value="false" />
     <option name="SHOW_DIRTY_RECURSIVELY" value="false" />
     <option name="LIMIT_HISTORY" value="true" />
     <option name="MAXIMUM_HISTORY_ROWS" value="1000" />
@@ -855,26 +820,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/usages/test.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="0" selection-start="220" selection-end="220" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/rewrite/TestRewriter.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="25" selection-start="55" selection-end="55" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files (x86)/scala2.10-dev/scala-2.10.2/src/scala-library-src.jar!/scala/collection/mutable/MapLike.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="59" column="64" selection-start="2075" selection-end="2075" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files (x86)/scala2.10-dev/scala-2.10.2/src/scala-library-src.jar!/scala/collection/mutable/Map.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="25" column="15" selection-start="829" selection-end="829" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
     <entry file="jar://$PROJECT_DIR$/lib/junit-4.5.jar!/org/junit/Assert.class">
       <provider selected="true" editor-type-id="text-editor">
         <state line="116" column="0" selection-start="5870" selection-end="5870" vertical-scroll-proportion="0.0" />
@@ -890,63 +835,89 @@
         <state line="32" column="3" selection-start="1324" selection-end="1499" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
-    <entry file="jar://C:/Program Files (x86)/scala2.10-dev/scala-2.10.2/src/scala-library-src.jar!/scala/Option.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="155" column="20" selection-start="5462" selection-end="5462" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/ast/Expression.scala">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="42" column="0" selection-start="1633" selection-end="1633" vertical-scroll-proportion="0.0">
+        <state line="42" column="0" selection-start="1633" selection-end="1633" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/typeChecker/StackedMap.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="18" column="0" selection-start="495" selection-end="495" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/partialEvalScala.iml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="11" column="22" selection-start="449" selection-end="449" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="jar://$PROJECT_DIR$/lib/junit-4.5.jar!/org/junit/internal/runners/model/ReflectiveCallable.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="38" selection-start="382" selection-end="382" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/typeChecker/StackedMap.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="18" column="0" selection-start="495" selection-end="495" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.7.0_40/src.zip!/com/sun/org/apache/xalan/internal/xsltc/compiler/util/IntType.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="55" column="19" selection-start="2493" selection-end="2493" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/TestSomeTypeChecker.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="21" column="7" selection-start="542" selection-end="542" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/typeChecker/TestBottomUpTypeChecker.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="37" column="3" selection-start="1153" selection-end="1153" vertical-scroll-proportion="0.0">
+        <state line="8" column="39" selection-start="261" selection-end="261" vertical-scroll-proportion="-5.44">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/typeChecker/BottomUpTypeChecker.scala">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="25" column="43" selection-start="827" selection-end="827" vertical-scroll-proportion="0.41055718">
+        <state line="16" column="33" selection-start="0" selection-end="3897" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files (x86)/scala/lib/scala-library.jar!/scala/Option.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="14" column="12" selection-start="675" selection-end="675" vertical-scroll-proportion="-7.28">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files (x86)/scala/lib/scala-library.jar!/scala/Some.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="1" column="17" selection-start="31" selection-end="31" vertical-scroll-proportion="-0.68">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/TestSomeTypeChecker.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="19" column="23" selection-start="525" selection-end="525" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/typeChecker/TestMostlyBottomUpTypeChecker.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="28" column="11" selection-start="871" selection-end="1253" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/typeChecker/MostlyBottomUpTypeChecker.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="54" column="13" selection-start="1859" selection-end="1859" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/typeChecker/Type.scala">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="33" selection-start="104" selection-end="104" vertical-scroll-proportion="0.0">
+        <state line="11" column="36" selection-start="258" selection-end="258" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/typeChecker/TestBottomUpTypeChecker.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="37" column="6" selection-start="1133" selection-end="1133" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/typeChecker/TopDownTypeChecker.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="91" column="33" selection-start="3000" selection-end="3000" vertical-scroll-proportion="0.568662">
           <folding />
         </state>
       </provider>
@@ -968,7 +939,7 @@
       </state>
       <state key="FacetStructureConfigurable.UI">
         <settings>
-          <last-edited>Scala</last-edited>
+          <last-edited>Scala (partialEvalScala)|Scala</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
@@ -980,7 +951,7 @@
       </state>
       <state key="GlobalLibrariesConfigurable.UI">
         <settings>
-          <last-edited>scala-compiler</last-edited>
+          <last-edited>scala-library</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>

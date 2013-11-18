@@ -5,11 +5,15 @@ object IntType extends Type
 {
   override def toString() = "Int"
 }
-case class LambdaType(variable: String, input: Type, output: Type) extends Type
+case class LambdaType(input: Type, output: Type) extends Type
 {
-  override def toString() = s"$variable: $input => $output"
+  override def toString() = s"$input -> $output"
 }
-case class VariableType(name: String) extends Type
+case class TypeVariable(name: Int) extends Type
 {
   override def toString() = "$" + name
+}
+case class Polymorphic(name: TypeVariable, typ: Type) extends Type
+{
+  override def toString() = s"$name => $typ"
 }
