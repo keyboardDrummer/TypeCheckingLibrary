@@ -6,7 +6,7 @@ import ast._
 import org.junit.Test
 import ast.Lambda
 
-class TestBottomUpTypeChecker extends TestSomeTypeChecker {
+class TestTopDownTypeChecker extends TestSomeTypeChecker {
 
   def assertException[E <: Class[_ <: Exception]](expected: E, f: () => Unit)
   {

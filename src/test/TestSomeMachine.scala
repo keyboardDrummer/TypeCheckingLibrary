@@ -8,7 +8,7 @@ import ast.Call
 import ast.IntValue
 import ast.Let
 
-abstract class TestSomeMachine {
+abstract class TestSomeMachine { //TODO test something like x = x + 1
 
   def evaluateExpression(expression: Expression) : Value
 
