@@ -2,6 +2,14 @@ package typeChecker
 
 import ast._
 import scala.collection.mutable
+import ast.Call
+import ast.Variable
+import ast.Let
+import ast.IntValue
+import ast.Equals
+import ast.Addition
+import ast.If
+import ast.Lambda
 
 object OnlyValueTypesChecker {
   def getType(expression: Expression) : Set[Expression] = {
@@ -17,13 +25,14 @@ class CannotApplyValueException extends RuntimeException
 class OnlyValueTypesChecker {
   val environment = new StackedMap[String,Expression]
   def checkType(expression: Expression) : Set[Expression] = expression match {
-    case Variable(name) => Set.apply(environment(name))
+    case Variable(name) => checkType(environment(name))
     case Call(callee, argument) => for (
       calleeType <- checkType(callee);
       argumentType <- checkType(argument);
       result <- calleeType match {
-        case Lambda(name, body) => {
+        case Closure(storedEnvironment, Lambda(name, body)) => {
           environment.push()
+          environment ++= storedEnvironment
           environment.put(name, argumentType)
           val result = checkType(body)
           environment.pop()
@@ -32,8 +41,8 @@ class OnlyValueTypesChecker {
         case _ => throw new CannotApplyValueException()
       }) yield result
 
-    case Lambda(name, body) => {
-      Set.apply(expression)
+    case lambda: Lambda => {
+      Set.apply(new Closure(environment.clone(), lambda))
     }
     case If(condition,thenExpression,elseExpression) => {
       checkInt(condition)
@@ -41,7 +50,7 @@ class OnlyValueTypesChecker {
     }
     case Let(name,value,body) => {
       environment.push()
-      environment.put(name,value)
+      environment.put(name,checkType(value))
       val result = checkType(body)
       environment.pop()
       result
@@ -58,6 +67,9 @@ class OnlyValueTypesChecker {
     }
     case IntValue(_) => {
       Set.apply(new IntValue(0))
+    }
+    case closure: Closure => {
+      Set.empty
     }
   }
 
