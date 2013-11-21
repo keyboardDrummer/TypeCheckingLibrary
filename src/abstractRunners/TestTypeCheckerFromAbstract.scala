@@ -6,7 +6,6 @@ import ast._
 import ast.Addition
 import ast.Lambda
 import usages.Examples
-import abstractRunners.{TypeMismatchException, IntType, TypeCheckerFromAbstract, AbstractMachine}
 import machine.VariableNotInScopeException
 
 class TestTypeCheckerFromAbstract {
