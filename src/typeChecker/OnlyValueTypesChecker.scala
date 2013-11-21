@@ -2,14 +2,6 @@ package typeChecker
 
 import ast._
 import scala.collection.mutable
-import ast.Call
-import ast.Variable
-import ast.Let
-import ast.IntValue
-import ast.Equals
-import ast.Addition
-import ast.If
-import ast.Lambda
 
 object OnlyValueTypesChecker {
   def getType(expression: Expression) : Set[Expression] = {
@@ -22,17 +14,21 @@ object OnlyValueTypesChecker {
 
 class CannotApplyValueException extends RuntimeException
 
+object Bottom extends Expression {}
 class OnlyValueTypesChecker {
   val environment = new StackedMap[String,Expression]
   def checkType(expression: Expression) : Set[Expression] = expression match {
-    case Variable(name) => checkType(environment(name))
+    case Variable(name) => environment(name) match {
+      case Bottom => Set.empty
+      case value => Set.apply(value)
+    }
     case Call(callee, argument) => for (
       calleeType <- checkType(callee);
       argumentType <- checkType(argument);
       result <- calleeType match {
-        case Closure(storedEnvironment, Lambda(name, body)) => {
+        case Closure(newEnvironment, Lambda(name,body)) => {
           environment.push()
-          environment ++= storedEnvironment
+          environment ++= newEnvironment
           environment.put(name, argumentType)
           val result = checkType(body)
           environment.pop()
@@ -41,7 +37,7 @@ class OnlyValueTypesChecker {
         case _ => throw new CannotApplyValueException()
       }) yield result
 
-    case lambda: Lambda => {
+    case lambda@Lambda(name, body) => {
       Set.apply(new Closure(environment.clone(), lambda))
     }
     case If(condition,thenExpression,elseExpression) => {
@@ -50,10 +46,17 @@ class OnlyValueTypesChecker {
     }
     case Let(name,value,body) => {
       environment.push()
-      environment.put(name,checkType(value))
-      val result = checkType(body)
+      environment.put(name,Bottom)
+      val valueTypes = checkType(value)
       environment.pop()
-      result
+      valueTypes.flatMap(valueType => {
+        environment.push()
+        environment.put(name,valueType)
+        val bodyType = checkType(body)
+        checkType(value)
+        environment.pop()
+        bodyType
+      })
     }
     case Equals(first,second) => {
       checkInt(first)
@@ -67,9 +70,6 @@ class OnlyValueTypesChecker {
     }
     case IntValue(_) => {
       Set.apply(new IntValue(0))
-    }
-    case closure: Closure => {
-      Set.empty
     }
   }
 
