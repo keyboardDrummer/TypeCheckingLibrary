@@ -28,23 +28,19 @@ class TestOnlyValueTypeChecker extends TestSomeTypeChecker {
   @Test
   def typeCheckIdentity() {
     val identity = new Let("identity", new Lambda("x", "x"), new If(new Call("identity",1),"identity","identity"))
-    val result = OnlyValueTypesChecker.getType(identity)
-    val variable = TypeVariable(7)
-    assertEquals(new Polymorphic(variable,new LambdaType(variable,variable)),result)
+    assertCheckSuccess(identity)
   }
 
   @Test
   def typeCheckIdentityInIf() {
     val identity = new Let("identity", new Lambda("x", "x"), new If(3,new Lambda("y", new IntValue(3) + "y"),"identity"))
-    val result = OnlyValueTypesChecker.getType(identity)
-    assertEquals(new LambdaType(IntType,IntType),result)
+    assertCheckSuccess(new Call(identity,3))
   }
 
   @Test
   def typeCheckIdentityInIf2() {
     val identity = new Let("identity", new Lambda("x", "x"), new If(3,"identity",new Lambda("y", new IntValue(3) + "y")))
-    val result = OnlyValueTypesChecker.getType(identity)
-    assertEquals(new LambdaType(IntType,IntType),result)
+    assertCheckSuccess(new Call(identity,3))
   }
 
   @Test
