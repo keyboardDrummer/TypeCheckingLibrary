@@ -28,7 +28,7 @@ class TestOnlyValueTypeChecker extends TestSomeTypeChecker {
   @Test
   def typeCheckIdentity() {
     val identity = new Let("identity", new Lambda("x", "x"), new If(new Call("identity",1),"identity","identity"))
-    val result = TopDownTypeChecker.getType(identity)
+    val result = OnlyValueTypesChecker.getType(identity)
     val variable = TypeVariable(7)
     assertEquals(new Polymorphic(variable,new LambdaType(variable,variable)),result)
   }
@@ -36,14 +36,14 @@ class TestOnlyValueTypeChecker extends TestSomeTypeChecker {
   @Test
   def typeCheckIdentityInIf() {
     val identity = new Let("identity", new Lambda("x", "x"), new If(3,new Lambda("y", new IntValue(3) + "y"),"identity"))
-    val result = TopDownTypeChecker.getType(identity)
+    val result = OnlyValueTypesChecker.getType(identity)
     assertEquals(new LambdaType(IntType,IntType),result)
   }
 
   @Test
   def typeCheckIdentityInIf2() {
     val identity = new Let("identity", new Lambda("x", "x"), new If(3,"identity",new Lambda("y", new IntValue(3) + "y")))
-    val result = TopDownTypeChecker.getType(identity)
+    val result = OnlyValueTypesChecker.getType(identity)
     assertEquals(new LambdaType(IntType,IntType),result)
   }
 
@@ -62,7 +62,7 @@ class TestOnlyValueTypeChecker extends TestSomeTypeChecker {
 
     List.range(0,3).map((i) => {
       val input = applyArguments(callConstX(i), List.range(0, i+1).map(i => new IntValue(i)))
-      val typ = TopDownTypeChecker.getType(input)
+      val typ = OnlyValueTypesChecker.getType(input)
       assertCheckSuccess(input)
     })
   }
