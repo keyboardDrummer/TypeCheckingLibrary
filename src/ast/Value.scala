@@ -6,7 +6,7 @@ trait Value extends Expression
 {
 }
 
-class Closure(val env: scala.collection.Map[String,Expression], val lambda: Lambda) extends Value {
+case class Closure(val env: scala.collection.Map[String,Expression], val lambda: Lambda) extends Value {
   override def toString = env.keys + ": " + lambda.toString
   override def hashCode = lambda.hashCode
   override def equals(that: Any) = that.equals(lambda)

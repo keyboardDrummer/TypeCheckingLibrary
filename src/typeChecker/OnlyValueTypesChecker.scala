@@ -14,16 +14,21 @@ object OnlyValueTypesChecker {
 
 class CannotApplyValueException extends RuntimeException
 
+object Bottom extends Expression {}
 class OnlyValueTypesChecker {
   val environment = new StackedMap[String,Expression]
   def checkType(expression: Expression) : Set[Expression] = expression match {
-    case Variable(name) => Set.apply(environment(name))
+    case Variable(name) => environment(name) match {
+      case Bottom => Set.empty
+      case value => Set.apply(value)
+    }
     case Call(callee, argument) => for (
       calleeType <- checkType(callee);
       argumentType <- checkType(argument);
       result <- calleeType match {
-        case Lambda(name, body) => {
+        case Closure(newEnvironment, Lambda(name,body)) => {
           environment.push()
+          environment ++= newEnvironment
           environment.put(name, argumentType)
           val result = checkType(body)
           environment.pop()
@@ -32,8 +37,8 @@ class OnlyValueTypesChecker {
         case _ => throw new CannotApplyValueException()
       }) yield result
 
-    case Lambda(name, body) => {
-      Set.apply(expression)
+    case lambda@Lambda(name, body) => {
+      Set.apply(new Closure(environment.clone(), lambda))
     }
     case If(condition,thenExpression,elseExpression) => {
       checkInt(condition)
@@ -41,10 +46,17 @@ class OnlyValueTypesChecker {
     }
     case Let(name,value,body) => {
       environment.push()
-      environment.put(name,value)
-      val result = checkType(body)
+      environment.put(name,Bottom)
+      val valueTypes = checkType(value)
       environment.pop()
-      result
+      valueTypes.flatMap(valueType => {
+        environment.push()
+        environment.put(name,valueType)
+        val bodyType = checkType(body)
+        checkType(value)
+        environment.pop()
+        bodyType
+      })
     }
     case Equals(first,second) => {
       checkInt(first)
