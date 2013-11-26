@@ -4,6 +4,7 @@ Partial Evaluation Scala
 The goal of this project was to see if I could write a language which is untyped by itself, but which allows you to write a typechecker in a library and apply that library *at compile-time*.
 
 This requires the following ingredients:
+
   1 Define a simple expression language to toy with.
   2 Metaprogramming features to allow writing a typechecker in a library and applying that to a program. 
   3 Partial evaluation optimization in the compiler that will run the typechecker library at compile-time.
