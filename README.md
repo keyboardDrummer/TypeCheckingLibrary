@@ -1,7 +1,7 @@
 Partial Evaluation Scala
 ======================
 
-The original goal of the project was to see if I could write a language which is untyped by itself, but which allows you to write a typechecker in a library and apply that *at compile-time*.
+The goal of this project was to see if I could write a language which is untyped by itself, but which allows you to write a typechecker in a library and apply that library *at compile-time*.
 
 This requires the following ingredients:
   1 Define a simple expression language to toy with.
