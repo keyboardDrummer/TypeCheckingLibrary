@@ -5,9 +5,9 @@ The goal of this project was to see if I could write a language which is untyped
 
 This requires the following ingredients:
 
-  1 Define a simple expression language to toy with.
-  2 Metaprogramming features to allow writing a typechecker in a library and applying that to a program. 
-  3 Partial evaluation optimization in the compiler that will run the typechecker library at compile-time.
+  1. Define a simple expression language to toy with.
+  2. Metaprogramming features to allow writing a typechecker in a library and applying that to a program. 
+  3. Partial evaluation optimization in the compiler that will run the typechecker library at compile-time.
 
 I've completed step 1 and 3. Step 3 enables partial evaluation in the following way.
 
