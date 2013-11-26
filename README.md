@@ -12,11 +12,13 @@ This requires the following ingredients:
 I've completed step 1 and 3. Step 3 enables partial evaluation in the following way.
 
 Given this program:
-program x = if x == 0 then 0 else fibonacci 6
-fibonacci i = if i == 0 or i == 1 then 1 else fibonacci (i - 1) + fibonacci (i - 2)
+
+    program x = if x == 0 then 0 else fibonacci 6
+    fibonacci i = if i == 0 or i == 1 then 1 else fibonacci (i - 1) + fibonacci (i - 2)
 
 It will be rewritten to:
-program x = if x == 0 then 0 else 8
+
+    program x = if x == 0 then 0 else 8
 
 ======================
 
